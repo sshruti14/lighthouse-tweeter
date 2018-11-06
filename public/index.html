@@ -6,12 +6,14 @@
 
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
 
     <!-- App CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/globals.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
@@ -30,15 +32,29 @@
     </nav>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main class="content-area">
 
-      <section class="new-tweet">
+      <section class="new-tweet container">
         <h2>Compose Tweet</h2>
         <form method="POST" action="/tweets/">
           <textarea name="text" placeholder="What are you humming about?"></textarea>
           <input type="submit" value="Tweet">
           <span class="counter">140</span>
         </form>
+      </section>
+
+      <section class="tweet container">
+        <header>
+          <img class="avatar" src="https://avatar.amuniversal.com/user_avatars/avatars_gocomicsver3/2973000/2973830/avatar_10c9bbbaddcd_128.png" alt="Calvin's avatar">
+          <h2>Calvin</h2>
+          <span class="handle">@Spiff</span>
+        </header>
+        <article>
+          Some days even my lucky rocket-ship underpants don't help.
+        </article>
+        <footer>
+          <span class="tweet-age">23 years ago</span>
+        </footer>
       </section>
 
     </main>
