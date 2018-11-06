@@ -40,3 +40,11 @@
   bottom: 8px;
 
 }
+
+.counter-invalid {
+  color: red;
+
+  font-size: 110%;
+  font-style: italic;
+  font-weight: bold;
+}
