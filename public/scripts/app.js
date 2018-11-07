@@ -4,70 +4,12 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const tweetData = [
 
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-      },
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Calvin",
-      "avatars": {
-        "small":   "https://avatar.amuniversal.com/user_avatars/avatars_gocomicsver3/2973000/2973830/avatar_10c9bbbaddcd_128.png",
-        "regular": "https://avatar.amuniversal.com/user_avatars/avatars_gocomicsver3/2973000/2973830/avatar_10c9bbbaddcd_128.png",
-        "large":   "https://avatar.amuniversal.com/user_avatars/avatars_gocomicsver3/2973000/2973830/avatar_10c9bbbaddcd_128.png"
-      },
-      "handle": "@Spiff"
-    },
-    "content": {
-      "text": "Some days even my lucky rocket-ship underpants don't help."
-    },
-    "created_at": 820368000000
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": {
-        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-      },
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1460113909088
-  },
-  {
-    "user": {
-      "name": "Johann von Goethe",
-      "avatars": {
-        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-      },
-      "handle": "@johann49"
-    },
-    "content": {
-      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-    },
-    "created_at": 1461003796368
-  }
-
-];
-
+const globals = {
+  MAX_TWEET_LENGTH: 140,
+  LAST_FETCHED: 0,
+  UPDATE_TWEETS_RATE: 5000
+};
 
 function formattedAge(uTime) {
 
@@ -109,25 +51,126 @@ function createTweetElement(tweet) {
 
 }
 
-function getTweets() {
-  return tweetData.sort((a,b) => b.created_at - a.created_at);
+function sortedTweets(tweets) {
+  return tweets.sort((a,b) => b.created_at - a.created_at);
 }
 
-function renderTweets() {
-
-  let $parent = $(".content-area");
+function renderTweets(data) {
 
   let elements = [];
 
-  getTweets().forEach( tweet => {
+  sortedTweets(data).forEach( tweet => {
     elements.push( createTweetElement(tweet) );
   });
 
-  $parent.append(elements);
+  return elements;
+
+}
+
+function appendElements(elements) {
+  $(".tweets-wrapper").append(elements);
+}
+
+function prependElements(elements) {
+  $(".tweets-wrapper").prepend(elements);
+}
+
+function loadNewTweets(data) {
+
+  const newTweets = sortedTweets(
+    data.filter( entry => {
+      return entry.created_at > globals.LAST_FETCHED;
+    })
+  );
+
+  console.log("filtered:");
+  console.log(newTweets);
+
+  if (newTweets.length > 0) {
+    const newElements = renderTweets(newTweets);
+    prependElements(newElements);
+  }
 
 }
 
 
+function validateTweet(text) {
+
+  if (text === "") {
+    alert("Forget to type something there, friend?");
+    return;
+  } else if (text.length > globals.MAX_TWEET_LENGTH) {
+    alert("So yeah... that character counter? It's there for a reason, and it's red for a reason.");
+    return;
+  }
+
+  return true;
+
+}
+
+function updateTweets() {
+
+  console.log("checking for updates...");
+  fetchTweets(loadNewTweets);
+
+}
+function submitTweet(event) {
+
+  event.preventDefault();
+
+  const text = $("#tweet-text").val();
+
+  if (!validateTweet(text)) return;
+
+  $.ajax(
+    "/tweets", {
+      method: "POST",
+      data: "text=" + text
+    })
+    .then( setTimeout(updateTweets, 500) );
+
+}
+
+function attachSubmitLogic() {
+
+  $(".new-tweet form").on("submit", submitTweet);
+
+}
+
+
+function loadTweets(data) {
+  appendElements(renderTweets(data));
+}
+
+function restartPolling() {
+
+  window.clearTimeout(globals.fetchTimeout);
+  globals.fetchTimeout = setTimeout(
+    updateTweets, globals.UPDATE_TWEETS_RATE);
+
+}
+
+function fetchTweets(cb) {
+
+  $.ajax(
+    "/tweets", {method: "GET"})
+    .then( data => {
+      cb(data);
+      const last = sortedTweets(data)[0];
+      globals.LAST_FETCHED = last.created_at;
+
+      restartPolling();
+
+    });
+
+}
+
+
+
+
 $( () => {
-  renderTweets();
+
+  fetchTweets(loadTweets);
+  attachSubmitLogic();
+
 });
