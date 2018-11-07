@@ -48,7 +48,7 @@ const tweetData = [
     "content": {
       "text": "Je pense , donc je suis"
     },
-    "created_at": 1461113959088
+    "created_at": 1460113909088
   },
   {
     "user": {
@@ -63,7 +63,7 @@ const tweetData = [
     "content": {
       "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
     },
-    "created_at": 1461113796368
+    "created_at": 1461003796368
   }
 
 ];
@@ -74,13 +74,14 @@ function formattedAge(uTime) {
   //  const now = new Date();
   //  const since = new Date(uTime);
 
-  return new Date(uTime).toDateString();
+  //return new Date(uTime).toDateString();
+
+  return moment(uTime).fromNow();
+
 }
 
 
 function createTweetElement(tweet) {
-
-  console.log(tweet.created_at);
 
   return $("<article>")
     .addClass("tweet container")
@@ -108,17 +109,20 @@ function createTweetElement(tweet) {
 
 }
 
+function getTweets() {
+  return tweetData.sort((a,b) => b.created_at - a.created_at);
+}
+
 function renderTweets() {
 
   let $parent = $(".content-area");
 
   let elements = [];
 
-  tweetData.forEach( tweet => {
+  getTweets().forEach( tweet => {
     elements.push( createTweetElement(tweet) );
   });
 
-  console.log(elements);
   $parent.append(elements);
 
 }
