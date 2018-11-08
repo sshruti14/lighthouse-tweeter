@@ -1,5 +1,5 @@
 .new-tweet {
-  transition: all 1s;
+  transition: all 0.3s;
   overflow: hidden;
 }
 
