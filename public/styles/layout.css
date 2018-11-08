@@ -10,10 +10,22 @@ html {
   box-sizing: inherit;
 }
 
+@keyframes backgroundScroll {
+  0% { background-position:   50% 50%; }
+  25% { background-position:   0% 50%; }
+  50% { background-position:  50% 50%; }
+  75% { background-position:  100% 50%; }
+  100% { background-position: 50% 50%; }
+}
+
 body {
   margin: 0;
-  color: #244751;
-  background-color: #eee;
+  color: var(--txt-color);
+  /* background-color: #eee; */
+  background: url("/images/background.jpg") no-repeat;
+  background-size: auto 100%;
+  background-attachment: fixed;
+  animation: backgroundScroll 480s cubic-bezier(0.05, 0.01, .95, .99) infinite;
 }
 
 /*
@@ -22,7 +34,10 @@ body {
 
 :root {
 
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "IM Fell English", serif;
+
+  --txt-color: #d1dceb;
+  --bg-color: hsla(210, 25%, 20%, 0.3);
 
 }
 
@@ -35,7 +50,7 @@ main {
   margin-left: auto;
   margin-right: auto;
 
-  background-color: white;
+  /* background-color: white; */
 
 }
 
@@ -45,9 +60,9 @@ main {
 
   position: relative;
 
-  border: 1px solid grey;
+  border: 1px solid black;
   border-radius: 4px;
-  background-color: lightgrey;
+  background-color: var(--bg-color);
 
   padding: 0.5em 0.5em 0.5em 0.5em;
 

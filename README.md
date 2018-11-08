@@ -15,3 +15,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Assets
+
+- Melee Island background - [Reddit](https://www.reddit.com/r/gaming/comments/d20fh/have_3_widescreen_monitors_heres_a_monkey_island/)
+
+- Sprites - [The Spriter's Resource](https://www.spriters-resource.com/pc_computer/secretofmonkeyisland/sheet/26970/)
