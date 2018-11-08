@@ -1,5 +1,5 @@
 .new-tweet {
-  transition: all 1s;
+  transition: all 0.8s;
   top: 0;
   overflow: hidden;
 }
@@ -46,6 +46,7 @@
   opacity: 0;
   /* top: -300px; */
   font-size: 0;
-  margin-bottom: -1rem;
+  padding: 0 0 0 0;
+  margin-bottom: calc(-1rem + -3px);
   /* transform: scaleY(0); */
 }
