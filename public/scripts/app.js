@@ -136,7 +136,11 @@ function attachListeners() {
   $(".new-tweet form").on("submit", submitTweet);
 
   $(".compose").on("click", event => {
-    $(".new-tweet").toggleClass("closed");
+    const elm = $(".new-tweet");
+    elm.toggleClass("closed");
+
+    if (!elm.hasClass("closed")) $("#tweet-text").focus();
+
   });
 
 }
