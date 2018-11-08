@@ -7,7 +7,7 @@
 
 const globals = {
   MAX_TWEET_LENGTH: 140,
-  LAST_FETCHED: 0,
+  LAST_FETCHED: null,
   UPDATE_TWEETS_RATE: 5000
 };
 
@@ -77,19 +77,17 @@ function prependElements(elements) {
 
 function loadNewTweets(data) {
 
-  const newTweets = sortedTweets(
-    data.filter( entry => {
-      return entry.created_at > globals.LAST_FETCHED;
-    })
-  );
+  // const newTweets = sortedTweets(
+  //   data.filter( entry => {
+  //     return entry.created_at > globals.LAST_FETCHED;
+  //   })
+  // );
 
-  console.log("filtered:");
-  console.log(newTweets);
+  // console.log("filtered:");
+  // console.log(newTweets);
 
-  if (newTweets.length > 0) {
-    const newElements = renderTweets(newTweets);
-    prependElements(newElements);
-  }
+  const newElements = renderTweets(data);
+  prependElements(newElements);
 
 }
 
@@ -117,10 +115,10 @@ function validateTweet(text) {
 
 function updateTweets() {
 
-  console.log("checking for updates...");
   fetchTweets(loadNewTweets);
 
 }
+
 function submitTweet(event) {
 
   event.preventDefault();
@@ -167,20 +165,28 @@ function restartPolling() {
 
 function fetchTweets(cb) {
 
+  const since = globals.LAST_FETCHED;
+
   $.ajax(
-    "/tweets", {method: "GET"})
+    "/tweets", {
+      method: "GET",
+      data: ((since) ? "since=" + globals.LAST_FETCHED : "")})
     .then( data => {
-      cb(data);
-      const last = sortedTweets(data)[0];
-      globals.LAST_FETCHED = last.created_at;
+
+      if (data.length) {
+
+        cb(data);
+
+        const last = data[0];
+        globals.LAST_FETCHED = last.created_at;
+
+      }
 
       restartPolling();
 
     });
 
 }
-
-
 
 
 $( () => {
