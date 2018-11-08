@@ -24,6 +24,33 @@
 
 }
 
+.new-tweet input[type=submit] {
+
+  margin-right: 8px;
+
+}
+
+.new-tweet .validation {
+
+  display: none;
+
+}
+
+.new-tweet .validation-error {
+
+  display: inline-block;
+
+  position: absolute;
+  bottom: 8px;
+
+  color: red;
+  font-size: 110%;
+  font-style: italic;
+  font-weight: bold;
+
+
+}
+
 .new-tweet .counter {
 
   display: inline-block;
@@ -35,11 +62,12 @@
 }
 
 .counter-invalid {
-  color: red;
 
+  color: red;
   font-size: 110%;
   font-style: italic;
   font-weight: bold;
+
 }
 
 .closed {

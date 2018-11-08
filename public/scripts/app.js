@@ -96,14 +96,21 @@ function loadNewTweets(data) {
 
 function validateTweet(text) {
 
+  const elm = $(".validation");
+
   if (text === "") {
-    alert("Forget to type something there, friend?");
+    // alert("Forget to type something there, friend?");
+    elm.addClass("validation-error");
+    elm.text("Forget to type something, friend?");
     return;
   } else if (text.length > globals.MAX_TWEET_LENGTH) {
-    alert("So yeah... that character counter? It's there for a reason, and it's red for a reason.");
+    // alert("So yeah... that character counter? It's there for a reason, and it's red for a reason.");
+    elm.addClass("validation-error");
+    elm.text("This is a tweet, not an essay.");
     return;
   }
 
+  elm.removeClass("validation-error");
   return true;
 
 }
