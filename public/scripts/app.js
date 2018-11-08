@@ -131,9 +131,13 @@ function submitTweet(event) {
 
 }
 
-function attachSubmitLogic() {
+function attachListeners() {
 
   $(".new-tweet form").on("submit", submitTweet);
+
+  $(".compose").on("click", event => {
+    $(".new-tweet").toggleClass("closed");
+  });
 
 }
 
@@ -171,6 +175,7 @@ function fetchTweets(cb) {
 $( () => {
 
   fetchTweets(loadTweets);
-  attachSubmitLogic();
+
+  attachListeners();
 
 });

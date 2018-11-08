@@ -1,15 +1,8 @@
-/* .new-tweet {
-
-  position: relative;
-
-  border: 1px solid grey;
-  border-radius: 4px;
-  background-color: lightgrey;
-
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  margin-bottom: 1em;
-
-} */
+.new-tweet {
+  transition: all 1s;
+  top: 0;
+  overflow: hidden;
+}
 
 .new-tweet h2 {
 
@@ -47,4 +40,12 @@
   font-size: 110%;
   font-style: italic;
   font-weight: bold;
+}
+
+.closed {
+  opacity: 0;
+  /* top: -300px; */
+  font-size: 0;
+  margin-bottom: -1rem;
+  /* transform: scaleY(0); */
 }
