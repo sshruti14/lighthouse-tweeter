@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
     "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js",
-    "live": "./node_modules/.bin/nodemon --watch server -e js server/index.js & ./node_modules/.bin/livereload"
+    "live": "./node_modules/.bin/livereload ./public",
+    "sass": "./node_modules/.bin/node-sass --watch src/sass --output public/css",
+    "dev": "./node_modules/.bin/parallelshell 'npm run local' 'npm run live' 'npm run sass'"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
@@ -21,6 +23,8 @@
   },
   "devDependencies": {
     "livereload": "^0.7.0",
-    "nodemon": "^1.9.2"
+    "node-sass": "^4.10.0",
+    "nodemon": "^1.9.2",
+    "parallelshell": "^3.0.2"
   }
 }
