@@ -10,7 +10,7 @@
 .tweet header {
   position: relative;
   width: calc(100% + 1em);
-  height: 80px;
+  height: 64px;
 
   border-radius: 4px 4px 0 0;
 
@@ -34,16 +34,19 @@
   /* border: 1px solid black; */
   border-radius: 50%;
 
+  margin-right: 16px;
+
 }
 
 .tweet header h2 {
   display: inline-block;
 
-  position: absolute;
-  margin-top: 0;
-  margin-left: 8px;
+  position: relative;
+  bottom: 8px;
 
-  line-height: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
+
 }
 
 .tweet .handle {
@@ -51,7 +54,8 @@
   display: inline-block;
 
   position: absolute;
-  right: 0.5em;
+  top: 0px;
+  right: 8px;
 
   line-height: 2rem;
 

@@ -70,6 +70,6 @@
 
 #nav-bar .compose:active {
 
-  background: hsl(var(--bg-color), 0.5);
+  background: hsl(var(--bg-color), 1);
 
 }

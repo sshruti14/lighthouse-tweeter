@@ -39,7 +39,7 @@ body {
 
   --txt-color: #dfe7f1;
   --txt-color-dark: 210, 20%, 10%;
-  --bg-color: 210, 20%, 15%;
+  --bg-color: 210, 25%, 15%;
   --bg-color-light: 210, 20%, 90%;
 
   --highlight: inset 0px 4px 8px -4px rgba(234, 255, 251, 0.5);
