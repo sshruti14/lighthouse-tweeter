@@ -67,3 +67,9 @@
   background: hsl(var(--bg-color-light), 1);
 
 }
+
+#nav-bar .compose:active {
+
+  background: hsl(var(--bg-color), 0.5);
+
+}
