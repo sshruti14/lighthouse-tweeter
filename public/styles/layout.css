@@ -23,9 +23,10 @@ body {
   color: var(--txt-color);
   /* background-color: #eee; */
   background: url("/images/background.jpg") no-repeat;
-  background-size: auto 100%;
+  background-size: auto 100vh;
   background-attachment: fixed;
   animation: backgroundScroll 480s cubic-bezier(0.05, 0.01, .95, .99) infinite;
+
 }
 
 /*
@@ -36,8 +37,13 @@ body {
 
   font-family: "IM Fell English", serif;
 
-  --txt-color: #d1dceb;
-  --bg-color: hsla(210, 25%, 20%, 0.3);
+  --txt-color: #dfe7f1;
+  --txt-color-dark: 210, 20%, 10%;
+  --bg-color: 210, 20%, 15%;
+  --bg-color-light: 210, 20%, 90%;
+
+  --highlight: inset 0px 4px 8px -4px rgba(234, 255, 251, 0.5);
+  --shadow: 2px 2px 1px 1px rgba(0,0,0,0.4);
 
 }
 
@@ -45,8 +51,10 @@ main {
 
   width: 450px;
 
-  padding: 80px 2em 2em 2em;
+  padding: 1em 2em 4em 2em;
 
+
+  margin-top: 64px;
   margin-left: auto;
   margin-right: auto;
 
@@ -60,13 +68,49 @@ main {
 
   position: relative;
 
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 4px;
-  background-color: var(--bg-color);
+  background-color: hsl(var(--bg-color), 0.9);
 
   padding: 0.5em 0.5em 0.5em 0.5em;
 
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 
+  box-shadow: var(--highlight), var(--shadow);
+}
+
+
+.page-footer {
+
+  position: fixed;
+
+  top: calc(100vh - 32px);
+
+  width: 100vw;
+  height: 32px;
+
+  padding: 0px 2em;
+
+  color: var(--txt-color);
+  background-color: hsla(var(--bg-color), 1);
+
+  box-shadow: var(--highlight);
+
+  text-align: center;
+  line-height: 32px;
+
+}
+
+.page-footer .tm-name {
+
+  font-size: 110%;
+  font-style: italic;
+
+}
+
+.page-footer .tm-company {
+
+  font-size: 110%;
+  font-style: italic;
 }

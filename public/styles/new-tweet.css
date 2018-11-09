@@ -23,6 +23,10 @@
 
   resize: none;
 
+  color: hsl(var(--txt-color-dark));
+  background-color: hsla(var(--bg-color-light), 0.9);
+
+  box-shadow: inset var(--shadow);
 }
 
 .new-tweet input[type=submit] {
@@ -44,8 +48,7 @@
   position: absolute;
   bottom: 8px;
 
-  color: red;
-  font-size: 110%;
+  color: rgb(255, 32, 32);
   font-style: italic;
   font-weight: bold;
 
@@ -64,7 +67,7 @@
 
 .counter-invalid {
 
-  color: red;
+  color: rgb(255, 32, 32);
   font-size: 110%;
   font-style: italic;
   font-weight: bold;

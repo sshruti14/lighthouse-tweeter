@@ -99,12 +99,12 @@ function validateTweet(text) {
   if (text === "") {
     // alert("Forget to type something there, friend?");
     elm.addClass("validation-error");
-    elm.text("Forget to type something, friend?");
+    elm.text("Ye'r lookin' a bit empty, friend");
     return;
   } else if (text.length > globals.MAX_TWEET_LENGTH) {
     // alert("So yeah... that character counter? It's there for a reason, and it's red for a reason.");
     elm.addClass("validation-error");
-    elm.text("This is a tweet, not an essay.");
+    elm.text("This be a mug o' grog, not a keg");
     return;
   }
 

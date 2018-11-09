@@ -3,13 +3,17 @@
   position: fixed;
   z-index: 1;
 
+  top: 0;
+
   width: 100vw;
-  height: 80px;
+  height: 64px;
 
   padding: 0px 2em;
 
   color: var(--txt-color);
-  background-color: var(--bg-color);
+  background-color: hsla(var(--bg-color), 1);
+
+  box-shadow: var(--shadow);
 
 }
 
@@ -17,8 +21,8 @@
 
   float: left;
 
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 
   margin-right: 16px;
 
@@ -30,7 +34,36 @@
 
   float: left;
 
-  line-height: 80px;
+  line-height: 64px;
   font-size: 3em;
+
+  margin-right: 16px;
+
+}
+
+#nav-bar .compose {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+
+
+
+  background: hsl(var(--bg-color-light), 0.8);
+
+  border: 0;
+  border-radius: 4px;
+
+  padding: 0.2em 0.5em 0.2em 0.5em;
+
+  font-size: 1.3em;
+
+}
+
+#nav-bar .compose:hover {
+
+
+  background: hsl(var(--bg-color-light), 1);
 
 }
