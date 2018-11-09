@@ -6,9 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
+
     "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js",
     "live": "./node_modules/.bin/livereload ./public",
-    "sass": "./node_modules/.bin/node-sass --watch src/sass --output public/css",
+    "sass": "./node_modules/.bin/node-sass --watch src/sass --output public/styles",
+
     "dev": "./node_modules/.bin/parallelshell 'npm run local' 'npm run live' 'npm run sass'"
   },
   "author": "Lighthouse Labs",

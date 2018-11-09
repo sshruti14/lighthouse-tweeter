@@ -10,10 +10,10 @@
 
   padding: 0px 2em;
 
-  color: var(--txt-color);
-  background-color: hsla(var(--bg-color), 1);
+  color: $txt-color;
+  background-color: rgba($bg-color, 1);
 
-  box-shadow: var(--shadow);
+  box-shadow: $shadow;
 
 }
 
@@ -50,7 +50,7 @@
 
 
 
-  background: hsl(var(--bg-color-light), 0.8);
+  background: rgba($bg-color-light, 0.8);
 
   border: 0;
   border-radius: 4px;
@@ -64,12 +64,12 @@
 #nav-bar .compose:hover {
 
 
-  background: hsl(var(--bg-color-light), 1);
+  background: rgba($bg-color-light, 1);
 
 }
 
 #nav-bar .compose:active {
 
-  background: hsl(var(--bg-color), 1);
+  background: rgba($bg-color, 1);
 
 }

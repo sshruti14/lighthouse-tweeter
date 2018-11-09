@@ -1,0 +1,233 @@
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+ */
+:root {
+  font-family: "IM Fell English", serif; }
+
+@keyframes backgroundScroll {
+  0% {
+    background-position: 50% 50%; }
+  25% {
+    background-position: 0% 50%; }
+  50% {
+    background-position: 50% 50%; }
+  75% {
+    background-position: 100% 50%; }
+  100% {
+    background-position: 50% 50%; } }
+
+body {
+  margin: 0;
+  color: #dfe7f1;
+  /* background-color: #eee; */
+  background: url("/images/background.jpg") no-repeat;
+  background-size: auto 100vh;
+  background-attachment: fixed;
+  animation: backgroundScroll 480s cubic-bezier(0.05, 0.01, 0.95, 0.99) infinite; }
+
+main {
+  width: 450px;
+  padding: 1em 2em 4em 2em;
+  margin-top: 64px;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: white; */ }
+
+.container {
+  position: relative;
+  /* border: 1px solid black; */
+  border-radius: 4px;
+  background-color: rgba(29, 38, 48, 0.9);
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  box-shadow: inset 0px 4px 8px -4px rgba(234, 255, 251, 0.5), 2px 2px 1px 1px rgba(0, 0, 0, 0.4); }
+
+.page-footer {
+  position: fixed;
+  top: calc(100vh - 32px);
+  width: 100vw;
+  height: 32px;
+  padding: 0px 2em;
+  color: #dfe7f1;
+  background-color: #1d2630;
+  box-shadow: inset 0px 4px 8px -4px rgba(234, 255, 251, 0.5);
+  text-align: center;
+  line-height: 32px; }
+
+.page-footer .tm-name {
+  font-size: 110%;
+  font-style: italic; }
+
+.page-footer .tm-company {
+  font-size: 110%;
+  font-style: italic; }
+
+#nav-bar {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100vw;
+  height: 64px;
+  padding: 0px 2em;
+  color: #dfe7f1;
+  background-color: #1d2630;
+  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.4); }
+
+#nav-bar .logo {
+  float: left;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 16px;
+  height: 48px; }
+
+#nav-bar .header {
+  float: left;
+  line-height: 64px;
+  font-size: 3em;
+  margin-right: 16px; }
+
+#nav-bar .compose {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  background: rgba(224, 230, 235, 0.8);
+  border: 0;
+  border-radius: 4px;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  font-size: 1.3em; }
+
+#nav-bar .compose:hover {
+  background: #e0e6eb; }
+
+#nav-bar .compose:active {
+  background: #1d2630; }
+
+.new-tweet {
+  transition: all 0.3s;
+  overflow: hidden; }
+
+.new-tweet h2 {
+  margin-top: 0;
+  border-bottom: 1px solid #dfe7f1;
+  color: #dfe7f1; }
+
+.new-tweet textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 0.5em;
+  resize: none;
+  color: #141a15;
+  background-color: rgba(224, 230, 235, 0.9);
+  box-shadow: inset 2px 2px 1px 1px rgba(0, 0, 0, 0.4); }
+
+.new-tweet input[type=submit] {
+  margin-right: 8px;
+  background: rgba(224, 230, 235, 0.8);
+  border: 0;
+  border-radius: 4px;
+  font-size: 1.1em; }
+
+.new-tweet input[type=submit]:hover {
+  background: #e0e6eb; }
+
+.new-tweet input[type=submit]:active {
+  background: #1d2630; }
+
+.new-tweet .validation {
+  display: none; }
+
+.new-tweet .validation-error {
+  display: inline-block;
+  position: absolute;
+  bottom: 8px;
+  color: #ff2020;
+  font-style: italic;
+  font-weight: bold; }
+
+.new-tweet .counter {
+  display: inline-block;
+  position: absolute;
+  right: 8px;
+  bottom: 8px; }
+
+.counter-invalid {
+  color: #ff2020;
+  font-size: 110%;
+  font-style: italic;
+  font-weight: bold; }
+
+.closed {
+  opacity: 0;
+  font-size: 0;
+  margin-bottom: calc(-1rem + -3px); }
+
+.tweet {
+  opacity: 0.85; }
+
+.tweet:hover {
+  opacity: 1; }
+
+.tweet header {
+  position: relative;
+  width: calc(100% + 1em);
+  height: 64px;
+  border-radius: 4px 4px 0 0;
+  margin-top: -0.5em;
+  margin-right: -0.5em;
+  margin-left: -0.5em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  background-color: rgba(29, 38, 48, 0.7);
+  /* border-bottom: 1px solid black; */ }
+
+.tweet .avatar {
+  display: inline-block;
+  width: auto;
+  height: 100%;
+  /* border: 1px solid black; */
+  border-radius: 50%;
+  margin-right: 16px; }
+
+.tweet header h2 {
+  display: inline-block;
+  position: relative;
+  bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+.tweet .handle {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 8px;
+  line-height: 2rem;
+  color: #dfe7f1; }
+
+.tweet section {
+  padding: 8px;
+  word-wrap: break-word;
+  font-size: 1.2em;
+  color: #141a15;
+  background-color: rgba(224, 230, 235, 0.7); }
+
+.tweet footer {
+  margin-right: -0.5em;
+  margin-left: -0.5em;
+  margin-bottom: -0.5em;
+  padding: 0.5em;
+  /* border-top: 1px solid black; */
+  font-size: 90%;
+  background-color: rgba(29, 38, 48, 0.7); }

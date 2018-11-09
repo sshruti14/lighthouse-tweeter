@@ -7,9 +7,9 @@
 
   margin-top: 0;
 
-  border-bottom: 1px solid var(--txt-color);
+  border-bottom: 1px solid $txt-color;
 
-  color: var(--txt-color);
+  color: $txt-color;
 }
 
 .new-tweet textarea {
@@ -23,17 +23,17 @@
 
   resize: none;
 
-  color: hsl(var(--txt-color-dark));
-  background-color: hsla(var(--bg-color-light), 0.9);
+  color: $txt-color-dark;
+  background-color: rgba($bg-color-light, 0.9);
 
-  box-shadow: inset var(--shadow);
+  box-shadow: inset $shadow;
 }
 
 .new-tweet input[type=submit] {
 
   margin-right: 8px;
 
-  background: hsl(var(--bg-color-light), 0.8);
+  background: rgba($bg-color-light, 0.8);
 
   border: 0;
   border-radius: 4px;
@@ -45,13 +45,13 @@
 .new-tweet input[type=submit]:hover {
 
 
-  background: hsl(var(--bg-color-light), 1);
+  background: rgba($bg-color-light, 1);
 
 }
 
 .new-tweet input[type=submit]:active {
 
-  background: hsl(var(--bg-color), 1);
+  background: rgba($bg-color, 1);
 
 }
 

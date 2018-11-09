@@ -1,0 +1,69 @@
+@keyframes backgroundScroll {
+  0% { background-position:   50% 50%; }
+  25% { background-position:   0% 50%; }
+  50% { background-position:  50% 50%; }
+  75% { background-position:  100% 50%; }
+  100% { background-position: 50% 50%; }
+}
+
+body {
+  margin: 0;
+  color: $txt-color;
+  /* background-color: #eee; */
+  background: url("/images/background.jpg") no-repeat;
+  background-size: auto 100vh;
+  background-attachment: fixed;
+  animation: backgroundScroll 480s cubic-bezier(0.05, 0.01, .95, .99) infinite;
+
+}
+
+main {
+
+  width: 450px;
+
+  padding: 1em 2em 4em 2em;
+
+
+  margin-top: 64px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* background-color: white; */
+
+}
+
+.page-footer {
+
+  position: fixed;
+
+  top: calc(100vh - 32px);
+
+  width: 100vw;
+  height: 32px;
+
+  padding: 0px 2em;
+
+  color: $txt-color;
+  background-color: rgba($bg-color, 1);
+
+  box-shadow: $highlight;
+
+  text-align: center;
+  line-height: 32px;
+
+}
+
+.page-footer .tm-name {
+
+  font-size: 110%;
+  font-style: italic;
+
+}
+
+.page-footer .tm-company {
+
+  font-size: 110%;
+  font-style: italic;
+}
+
+
