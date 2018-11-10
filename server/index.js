@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const MongoClient = require("mongodb").MongoClient;
-const MONGODB_URI = "mongodb://localhost:27017/tweeter";
+const MONGODB_URI = "mongodb://grogger:grogger1@ds031671.mlab.com:31671/grogger";
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
