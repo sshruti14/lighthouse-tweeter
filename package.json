@@ -7,6 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
 
+    "sass-compile": "./node_modules/.bin/node-sass src/sass --output public/styles",
+
     "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js",
     "live": "./node_modules/.bin/livereload ./public",
     "sass": "./node_modules/.bin/node-sass --watch src/sass --output public/styles",

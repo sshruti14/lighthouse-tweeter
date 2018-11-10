@@ -32,38 +32,3 @@ main {
 
 }
 
-.page-footer {
-
-  position: fixed;
-
-  top: calc(100vh - 32px);
-
-  width: 100vw;
-  height: 32px;
-
-  padding: 0px 2em;
-
-  color: $txt-color;
-  background-color: rgba($bg-color, 1);
-
-  box-shadow: $highlight;
-
-  text-align: center;
-  line-height: 32px;
-
-}
-
-.page-footer .tm-name {
-
-  font-size: 110%;
-  font-style: italic;
-
-}
-
-.page-footer .tm-company {
-
-  font-size: 110%;
-  font-style: italic;
-}
-
-

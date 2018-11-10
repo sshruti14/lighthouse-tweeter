@@ -74,7 +74,10 @@
   background-color: rgba($bg-color-light, 0.7);
 
 }
-.tweet footer {
+
+.tweet-footer {
+
+  display: relative;
 
   margin-right: -0.5em;
   margin-left: -0.5em;
@@ -87,5 +90,42 @@
   font-size: 90%;
 
   background-color: rgba($bg-color, 0.7);
+
+}
+
+.tweet .tweet-footer img {
+  visibility: hidden;
+}
+
+.tweet:hover .tweet-footer img {
+
+  visibility: visible;
+
+}
+
+.tweet-footer img:hover {
+
+  height: 32px;
+
+}
+
+.tweet-award {
+
+  position: absolute;
+  right: 88px;
+
+}
+
+.tweet-drink {
+
+  position: absolute;
+  right: 48px;
+
+}
+
+.tweet-flag {
+
+  position: absolute;
+  right: 8px;
 
 }

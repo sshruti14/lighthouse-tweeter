@@ -51,26 +51,6 @@ main {
   margin-right: auto;
   /* background-color: white; */ }
 
-.page-footer {
-  position: fixed;
-  top: calc(100vh - 32px);
-  width: 100vw;
-  height: 32px;
-  padding: 0px 2em;
-  color: #dfe7f1;
-  background-color: #1d2630;
-  box-shadow: inset 0px 4px 8px -4px rgba(234, 255, 251, 0.5);
-  text-align: center;
-  line-height: 32px; }
-
-.page-footer .tm-name {
-  font-size: 110%;
-  font-style: italic; }
-
-.page-footer .tm-company {
-  font-size: 110%;
-  font-style: italic; }
-
 #nav-bar {
   position: fixed;
   z-index: 1;
@@ -220,7 +200,8 @@ main {
   color: #141a15;
   background-color: rgba(224, 230, 235, 0.7); }
 
-.tweet footer {
+.tweet-footer {
+  display: relative;
   margin-right: -0.5em;
   margin-left: -0.5em;
   margin-bottom: -0.5em;
@@ -228,3 +209,66 @@ main {
   /* border-top: 1px solid black; */
   font-size: 90%;
   background-color: rgba(29, 38, 48, 0.7); }
+
+.tweet .tweet-footer img {
+  visibility: hidden; }
+
+.tweet:hover .tweet-footer img {
+  visibility: visible; }
+
+.tweet-footer img:hover {
+  height: 32px; }
+
+.tweet-award {
+  position: absolute;
+  right: 88px; }
+
+.tweet-drink {
+  position: absolute;
+  right: 48px; }
+
+.tweet-flag {
+  position: absolute;
+  right: 8px; }
+
+.page-footer {
+  position: fixed;
+  top: calc(100% - 48px);
+  width: 100%;
+  height: 48px;
+  padding: 0px 2em;
+  color: #dfe7f1;
+  background-color: #1d2630;
+  box-shadow: inset 0px 4px 8px -4px rgba(234, 255, 251, 0.5);
+  overflow: visible; }
+
+.page-footer .tm-wrapper {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  line-height: 48px; }
+
+.page-footer .tm-name {
+  font-size: 110%;
+  font-style: italic; }
+
+.page-footer .tm-company {
+  font-size: 110%;
+  font-style: italic; }
+
+.page-footer .man-1 {
+  position: absolute;
+  left: 36px;
+  top: -63px; }
+
+.page-footer .man-2 {
+  position: absolute;
+  left: 112px;
+  top: -69px;
+  transform: rotate(16deg); }
+
+.page-footer .man-3 {
+  position: absolute;
+  left: calc(100% - 128px);
+  top: -63px;
+  transform: rotate(14deg); }

@@ -8,7 +8,10 @@
 const globals = {
   MAX_TWEET_LENGTH: 140,
   LAST_FETCHED: null,
-  UPDATE_TWEETS_RATE: 5000
+  UPDATE_TWEETS_RATE: 5000,
+  IMG_AWARD: "/images/spoils.png",
+  IMG_DRINKTO: "/images/drinkto.png",
+  IMG_FLAG: "/images/flag.png"
 };
 
 function formattedAge(uTime) {
@@ -29,6 +32,7 @@ function createTweetElement(tweet) {
     .addClass("tweet container")
     .append(
       $("<header>")
+        .addClass("tweet-header")
         .append(
           $("<img>")
             .addClass("avatar")
@@ -42,10 +46,27 @@ function createTweetElement(tweet) {
       $("<section>")
         .text(tweet.content.text),
       $("<footer>")
+        .addClass("tweet-footer")
         .append(
           $("<span>")
             .addClass("tweet-age")
-            .text(formattedAge(tweet.created_at))
+            .text(formattedAge(tweet.created_at)),
+          $("<img>")
+            .addClass("tweet-award")
+            .attr("src", globals.IMG_AWARD)
+            .attr("alt", "Give 'em a share of yer spoils")
+            .attr("title", "Give 'em a share of yer spoils"),
+          $("<img>")
+            .addClass("tweet-drink")
+            .attr("src", globals.IMG_DRINKTO)
+            .attr("alt", "Drink to that")
+            .attr("title", "Drink to that"),
+          $("<img>")
+            .addClass("tweet-flag")
+            .attr("src", globals.IMG_FLAG)
+            .attr("alt", "Raise the jolly roger")
+            .attr("title", "Raise the jolly roger"),
+
         )
     );
 
