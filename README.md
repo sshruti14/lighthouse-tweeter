@@ -32,7 +32,7 @@ _Grogger_ is a basic clone of Twitter, catering to a slightly... scurvier... dem
 - LiveReload
 - Parallelshell
 
-The latter allows a single script to run the other three and monitor them so that if one ends/crashes all of them will stop. This was necessary, at least on my Linux machine, because simply using `nodemon & node-sass & livereload` would leave the other processes running silently in the background until I killed them.
+The latter allows `npm run dev` to start the other three and monitor them so that if one ends/crashes all of them will stop. This was helpful, at least on my machine, because simply using `nodemon & node-sass & livereload` would leave the other processes running silently in the background until I killed them.
 
 ## Assets
 
