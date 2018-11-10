@@ -159,6 +159,8 @@ function submitTweet(event) {
 
   if (!validateTweet(text)) return;
 
+  $("#tweet-text").val("");
+
   $.ajax(
     "/tweets", {
       method: "POST",
@@ -220,9 +222,13 @@ function fetchTweets(cb) {
 
       if (data.length) {
 
-        cb(data);
+        // Filtering again for cases where two fetches were sent off very
+        // close together and the same new tweet comes back twice
+        const filtered = data.filter(tweet => tweet.created_at > globals.LAST_FETCHED);
 
-        const last = data[0];
+        cb(filtered);
+
+        const last = filtered[0];
         globals.LAST_FETCHED = last.created_at;
 
       }
