@@ -7,33 +7,36 @@
 
   &-header {
     position: relative;
-    width: calc(100% + 1em);
-    height: 64px;
-
-    border-radius: 4px 4px 0 0;
 
     margin-top: -0.5em;
     margin-right: -0.5em;
     margin-left: -0.5em;
 
+    width: calc(100% + 1em);
+    height: 64px;
+
     padding: 0.5em 0.5em 0.5em 0.5em;
 
+    border-radius: 4px 4px 0 0;
     background-color: rgba($color-bg, 0.7);
 
   }
 
   &-avatar {
+
     display: inline-block;
+
+    margin-right: 16px;
+
     width: auto;
     height: 100%;
 
     border-radius: 50%;
 
-    margin-right: 16px;
-
   }
 
   &-username {
+
     display: inline-block;
 
     position: relative;
@@ -53,7 +56,6 @@
     right: 8px;
 
     line-height: 2rem;
-
     font-size: 1rem;
 
     color: $color-text;
@@ -63,8 +65,8 @@
   &-text {
 
     padding: 8px;
-    word-wrap: break-word;
 
+    word-wrap: break-word;
     font-size: 1.2em;
 
     color: $color-text-dark;
@@ -89,6 +91,7 @@
   }
 
   &-footer-img {
+
     visibility: hidden;
 
     &:hover {

@@ -22,7 +22,6 @@
 
     width: 100%;
 
-
     text-align: center;
     line-height: 48px;
 
@@ -43,6 +42,7 @@
 
 
   &-man-1 {
+
     position: absolute;
     left: 36px;
     top: -63px;
@@ -50,17 +50,23 @@
   }
 
   &-man-2 {
+
     position: absolute;
     left: 112px;
     top: -69px;
+
     transform: rotate(16deg);
+
   }
 
   &-man-3 {
+
     position: absolute;
     left: calc(100% - 128px);
     top: -63px;
+
     transform: rotate(-14deg) scaleX(-1);
+
   }
 
 }

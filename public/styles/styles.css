@@ -12,15 +12,6 @@ html {
 :root {
   font-family: "IM Fell English", serif; }
 
-.container {
-  position: relative;
-  border-radius: 4px;
-  background-color: rgba(29, 38, 48, 0.9);
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  box-shadow: inset 0px 4px 8px -4px rgba(234, 255, 251, 0.5), 2px 2px 1px 1px rgba(0, 0, 0, 0.4); }
-
 @keyframes backgroundScroll {
   0% {
     background-position: 50% 50%; }
@@ -43,14 +34,23 @@ body {
 
 main {
   width: 450px;
-  padding: 1em 2em 4em 2em;
   margin-top: 64px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  padding: 1em 2em 4em 2em; }
 
 @media only screen and (max-width: 760px) {
   main {
     width: calc(300px + 20vw); } }
+
+.container {
+  position: relative;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+  background-color: rgba(29, 38, 48, 0.9);
+  box-shadow: inset 0px 4px 8px -4px rgba(234, 255, 251, 0.5), 2px 2px 1px 1px rgba(0, 0, 0, 0.4); }
 
 .nav-bar {
   position: fixed;
@@ -70,9 +70,9 @@ main {
     height: 48px; }
   .nav-bar-header {
     float: left;
+    margin-right: 16px;
     line-height: 64px;
-    font-size: 3em;
-    margin-right: 16px; }
+    font-size: 3em; }
   @media only screen and (max-width: 760px) {
     .nav-bar-header {
       display: none; } }
@@ -81,10 +81,10 @@ main {
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+    padding: 0.2em 0.5em 0.2em 0.5em;
     background: rgba(224, 230, 235, 0.8);
     border: 0;
     border-radius: 4px;
-    padding: 0.2em 0.5em 0.2em 0.5em;
     font-size: 1.3em; }
     .nav-bar-compose:hover {
       background: #e0e6eb; }
@@ -96,17 +96,17 @@ main {
   overflow: hidden; }
   .new-tweet-closed {
     opacity: 0;
-    font-size: 0;
-    margin-bottom: calc(-1rem + -3px); }
+    margin-bottom: calc(-1rem + -3px);
+    font-size: 0; }
   .new-tweet-username {
     margin-top: 0;
     border-bottom: 1px solid #dfe7f1;
     color: #dfe7f1; }
   .new-tweet-text {
     display: block;
-    width: 100%;
     margin-bottom: 8px;
     padding: 0.5em;
+    width: 100%;
     resize: none;
     color: #141a15;
     background-color: rgba(224, 230, 235, 0.9);
@@ -147,20 +147,20 @@ main {
     opacity: 1; }
   .tweet-header {
     position: relative;
-    width: calc(100% + 1em);
-    height: 64px;
-    border-radius: 4px 4px 0 0;
     margin-top: -0.5em;
     margin-right: -0.5em;
     margin-left: -0.5em;
+    width: calc(100% + 1em);
+    height: 64px;
     padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 4px 4px 0 0;
     background-color: rgba(29, 38, 48, 0.7); }
   .tweet-avatar {
     display: inline-block;
+    margin-right: 16px;
     width: auto;
     height: 100%;
-    border-radius: 50%;
-    margin-right: 16px; }
+    border-radius: 50%; }
   .tweet-username {
     display: inline-block;
     position: relative;

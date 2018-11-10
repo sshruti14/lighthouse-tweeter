@@ -1,11 +1,16 @@
 .new-tweet {
+
   transition: all 0.3s;
   overflow: hidden;
 
   &-closed {
+
     opacity: 0;
-    font-size: 0;
+
     margin-bottom: calc(-1rem + -3px);
+
+    font-size: 0;
+
   }
 
   &-username {
@@ -15,16 +20,17 @@
     border-bottom: 1px solid $color-text;
 
     color: $color-text;
+
   }
 
   &-text {
 
     display: block;
-    width: 100%;
 
     margin-bottom: 8px;
-
     padding: 0.5em;
+
+    width: 100%;
 
     resize: none;
 
@@ -44,16 +50,11 @@
     font-size: 1.1em;
 
     &:hover {
-
-
       background: rgba($color-bg-light, 1);
-
     }
 
     &:active {
-
       background: rgba($color-bg, 1);
-
     }
 
   }
