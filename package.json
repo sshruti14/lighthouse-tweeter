@@ -30,5 +30,8 @@
     "node-sass": "^4.10.0",
     "nodemon": "^1.9.2",
     "parallelshell": "^3.0.2"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
