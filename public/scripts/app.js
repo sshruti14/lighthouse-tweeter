@@ -1,10 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
-
 const globals = {
   MAX_TWEET_LENGTH: 140,
   LAST_FETCHED: null,
@@ -14,18 +7,14 @@ const globals = {
   IMG_FLAG: "/images/flag.png"
 };
 
+
 function formattedAge(uTime) {
-
-  //  const now = new Date();
-  //  const since = new Date(uTime);
-
-  //return new Date(uTime).toDateString();
-
   return moment(uTime).fromNow();
-
 }
 
 
+// Accepts a tweet object and returns a JQuery object of the
+// generated DOM structure
 function createTweetElement(tweet) {
 
   return $("<article>")
@@ -35,15 +24,17 @@ function createTweetElement(tweet) {
         .addClass("tweet-header")
         .append(
           $("<img>")
-            .addClass("avatar")
+            .addClass("tweet-avatar")
             .attr("src", tweet.user.avatars.regular),
           $("<h2>")
+            .addClass("tweet-username")
             .text(tweet.user.name),
           $("<span>")
-            .addClass("handle")
+            .addClass("tweet-handle")
             .text(tweet.user.handle)
         ),
       $("<section>")
+        .addClass("tweet-text")
         .text(tweet.content.text),
       $("<footer>")
         .addClass("tweet-footer")
@@ -55,7 +46,7 @@ function createTweetElement(tweet) {
             .attr("href", "#")
             .append(
               $("<img>")
-                .addClass("tweet-award")
+                .addClass("tweet-footer-img tweet-award")
                 .attr("src", globals.IMG_AWARD)
                 .attr("alt", "Give 'em a share of yer spoils")
                 .attr("title", "Give 'em a share of yer spoils")
@@ -64,7 +55,7 @@ function createTweetElement(tweet) {
             .attr("href", "#")
             .append(
               $("<img>")
-                .addClass("tweet-drink")
+                .addClass("tweet-footer-img tweet-drink")
                 .attr("src", globals.IMG_DRINKTO)
                 .attr("alt", "Drink to that")
                 .attr("title", "Drink to that")
@@ -73,93 +64,80 @@ function createTweetElement(tweet) {
             .attr("href", "#")
             .append(
               $("<img>")
-                .addClass("tweet-flag")
+                .addClass("tweet-footer-img tweet-flag")
                 .attr("src", globals.IMG_FLAG)
                 .attr("alt", "Raise the jolly roger")
                 .attr("title", "Raise the jolly roger")
             )
         )
     );
-
 }
 
-function sortedTweets(tweets) {
-  return tweets.sort((a,b) => b.created_at - a.created_at);
-}
 
+// Return an array of tweets rendered for the DOM from
+// an array of tweet objects
 function renderTweets(data) {
 
   let elements = [];
 
-  sortedTweets(data).forEach( tweet => {
-    elements.push( createTweetElement(tweet) );
-  });
+  let i = data.length - 1;
+  do {
+    elements.push(createTweetElement(data[i]));
+  } while (i--);
 
   return elements;
 
 }
 
+
 function appendElements(elements) {
   $(".tweets-wrapper").append(elements);
 }
+
 
 function prependElements(elements) {
   $(".tweets-wrapper").prepend(elements);
 }
 
-function loadNewTweets(data) {
-
-  // const newTweets = sortedTweets(
-  //   data.filter( entry => {
-  //     return entry.created_at > globals.LAST_FETCHED;
-  //   })
-  // );
-
-  // console.log("filtered:");
-  // console.log(newTweets);
-
-  const newElements = renderTweets(data);
-  prependElements(newElements);
-
-}
-
 
 function validateTweet(text) {
 
-  const elm = $(".validation");
+  const elm = $(".new-tweet-validation");
 
   if (text === "") {
     // alert("Forget to type something there, friend?");
-    elm.addClass("validation-error");
+    elm.addClass("new-tweet-validation-error");
     elm.text("Ye'r lookin' a bit empty, friend");
     return;
   } else if (text.length > globals.MAX_TWEET_LENGTH) {
     // alert("So yeah... that character counter? It's there for a reason, and it's red for a reason.");
-    elm.addClass("validation-error");
+    elm.addClass("new-tweet-validation-error");
     elm.text("This be a mug o' grog, not a keg");
     return;
   }
 
-  elm.removeClass("validation-error");
+  elm.removeClass("new-tweet-validation-error");
   return true;
 
 }
 
+
 function updateTweets() {
-
   fetchTweets(loadNewTweets);
-
 }
+
 
 function submitTweet(event) {
 
   event.preventDefault();
 
-  const text = $("#tweet-text").val();
+  const textArea = $(".new-tweet-text");
+
+  const text = textArea.val();
 
   if (!validateTweet(text)) return;
 
-  $("#tweet-text").val("");
+  textArea.val("");
 
   $.ajax(
     "/tweets", {
@@ -170,37 +148,41 @@ function submitTweet(event) {
 
 }
 
-function attachListeners() {
 
-  $(".new-tweet form").on("submit", submitTweet);
+function toggleNewTweet() {
 
-  $(".compose").on("click", event => {
-    const elm = $(".new-tweet");
-    elm.toggleClass("closed");
+  const elm = $(".new-tweet");
+  elm.toggleClass("new-tweet-closed");
 
-    if (!elm.hasClass("closed")) $("#tweet-text").focus();
+  if (!elm.hasClass("new-tweet-closed")) $(".new-tweet-text").focus();
 
-  });
+}
 
-  $(".new-tweet textarea").on("input", null, null, function (event) {
 
-    const charsLeft = globals.MAX_TWEET_LENGTH - this.value.length;
-    const counter = $(this).siblings(".counter")[0];
+function updateCharCounter() {
 
-    counter.innerText = charsLeft;
+  const elm = $(".new-tweet-text");
+  const charsLeft = globals.MAX_TWEET_LENGTH - elm.val().length;
+  const counter = $(".new-tweet-counter");
 
-    (charsLeft < 0)
-      ? counter.classList.add("counter-invalid")
-      : counter.classList.remove("counter-invalid");
+  counter.text(charsLeft);
 
-  });
+  (charsLeft < 0)
+    ? counter.addClass("new-tweet-counter-invalid")
+    : counter.removeClass("new-tweet-counter-invalid");
 
+}
+
+
+function loadNewTweets(data) {
+  prependElements(renderTweets(data));
 }
 
 
 function loadTweets(data) {
   appendElements(renderTweets(data));
 }
+
 
 function restartPolling() {
 
@@ -210,6 +192,8 @@ function restartPolling() {
 
 }
 
+
+// Request all tweets created since the last fetch
 function fetchTweets(cb) {
 
   const since = globals.LAST_FETCHED;
@@ -228,7 +212,7 @@ function fetchTweets(cb) {
 
         cb(filtered);
 
-        const last = filtered[0];
+        const last = filtered[filtered.length-1];
         globals.LAST_FETCHED = last.created_at;
 
       }
@@ -240,10 +224,17 @@ function fetchTweets(cb) {
 }
 
 
+function attachListeners() {
+
+  $(".new-tweet-form").on("submit", submitTweet);
+  $(".nav-bar-compose").on("click", toggleNewTweet);
+  $(".new-tweet-text").on("input", updateCharCounter);
+
+}
+
+
 $( () => {
-
   fetchTweets(loadTweets);
-
   attachListeners();
 
 });

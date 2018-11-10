@@ -1,101 +1,99 @@
 .new-tweet {
   transition: all 0.3s;
   overflow: hidden;
-}
 
-.new-tweet h2 {
+  &-closed {
+    opacity: 0;
+    font-size: 0;
+    margin-bottom: calc(-1rem + -3px);
+  }
 
-  margin-top: 0;
+  &-username {
 
-  border-bottom: 1px solid $txt-color;
+    margin-top: 0;
 
-  color: $txt-color;
-}
+    border-bottom: 1px solid $color-text;
 
-.new-tweet textarea {
+    color: $color-text;
+  }
 
-  display: block;
-  width: 100%;
+  &-text {
 
-  margin-bottom: 8px;
+    display: block;
+    width: 100%;
 
-  padding: 0.5em;
+    margin-bottom: 8px;
 
-  resize: none;
+    padding: 0.5em;
 
-  color: $txt-color-dark;
-  background-color: rgba($bg-color-light, 0.9);
+    resize: none;
 
-  box-shadow: inset $shadow;
-}
+    color: $color-text-dark;
+    background-color: rgba($color-bg-light, 0.9);
 
-.new-tweet input[type=submit] {
+    box-shadow: inset $shadow;
+  }
 
-  margin-right: 8px;
+  &-submit {
 
-  background: rgba($bg-color-light, 0.8);
+    margin-right: 8px;
 
-  border: 0;
-  border-radius: 4px;
+    background: rgba($color-bg-light, 0.8);
+    border: 0;
+    border-radius: 4px;
+    font-size: 1.1em;
 
-  font-size: 1.1em;
-
-}
-
-.new-tweet input[type=submit]:hover {
-
-
-  background: rgba($bg-color-light, 1);
-
-}
-
-.new-tweet input[type=submit]:active {
-
-  background: rgba($bg-color, 1);
-
-}
-
-.new-tweet .validation {
-
-  display: none;
-
-}
-
-.new-tweet .validation-error {
-
-  display: inline-block;
-
-  position: absolute;
-  bottom: 8px;
-
-  color: rgb(255, 32, 32);
-  font-style: italic;
-  font-weight: bold;
+    &:hover {
 
 
-}
+      background: rgba($color-bg-light, 1);
 
-.new-tweet .counter {
+    }
 
-  display: inline-block;
-  position: absolute;
+    &:active {
 
-  right: 8px;
-  bottom: 8px;
+      background: rgba($color-bg, 1);
 
-}
+    }
 
-.counter-invalid {
+  }
 
-  color: rgb(255, 32, 32);
-  font-size: 110%;
-  font-style: italic;
-  font-weight: bold;
+  &-validation {
 
-}
+    display: none;
 
-.closed {
-  opacity: 0;
-  font-size: 0;
-  margin-bottom: calc(-1rem + -3px);
+    &-error {
+
+      display: inline-block;
+
+      position: absolute;
+      bottom: 8px;
+
+      color: $color-error;
+      font-style: italic;
+      font-weight: bold;
+
+    }
+
+  }
+
+  &-counter {
+
+    display: inline-block;
+    position: absolute;
+
+    right: 8px;
+    bottom: 8px;
+
+    &-invalid {
+
+      color: $color-error;
+      font-size: 110%;
+      font-style: italic;
+      font-weight: bold;
+
+    }
+
+  }
+
 }

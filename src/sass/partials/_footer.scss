@@ -1,4 +1,4 @@
-.page-footer {
+.footer {
 
   position: fixed;
 
@@ -9,72 +9,72 @@
 
   padding: 0px 2em;
 
-  color: $txt-color;
-  background-color: rgba($bg-color, 1);
+  color: $color-text;
+  background-color: rgba($color-bg, 1);
 
   box-shadow: $highlight;
 
   overflow: visible;
 
+  &-tm {
+
+    position: absolute;
+
+    width: 100%;
+
+
+    text-align: center;
+    line-height: 48px;
+
+    &-name {
+
+      font-size: 110%;
+      font-style: italic;
+
+    }
+
+    &-company {
+
+      font-size: 110%;
+      font-style: italic;
+    }
+  }
+
+
+
+  &-man-1 {
+    position: absolute;
+    left: 36px;
+    top: -63px;
+
+  }
+
+  &-man-2 {
+    position: absolute;
+    left: 112px;
+    top: -69px;
+    transform: rotate(16deg);
+  }
+
+  &-man-3 {
+    position: absolute;
+    left: calc(100% - 128px);
+    top: -63px;
+    transform: rotate(-14deg) scaleX(-1);
+  }
 
 }
-
-.page-footer .tm-wrapper {
-
-  position: absolute;
-
-  width: 100%;
-
-
-  text-align: center;
-  line-height: 48px;
-}
-
-.page-footer .tm-name {
-
-  font-size: 110%;
-  font-style: italic;
-
-}
-
-.page-footer .tm-company {
-
-  font-size: 110%;
-  font-style: italic;
-}
-
-.page-footer .man-1 {
-  position: absolute;
-  left: 36px;
-  top: -63px;
-
-}
-
-.page-footer .man-2 {
-  position: absolute;
-  left: 112px;
-  top: -69px;
-  transform: rotate(16deg);
-}
-
-.page-footer .man-3 {
-  position: absolute;
-  left: calc(100% - 128px);
-  top: -63px;
-  transform: rotate(-14deg) scaleX(-1);
-}
-
 
 @media only screen and (max-width: $responsive-width) {
 
-  .page-footer {
+  .footer {
 
     top: calc(100% - 24px);
     height: 24px;
 
   }
 
-  .page-footer .tm-wrapper {
+  .footer-tm {
     display: none;
   }
 

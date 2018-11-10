@@ -16,23 +16,26 @@
 
 }
 
+
 $responsive-width: 760px;
 
-$txt-color: rgb(223,231,241);
-$txt-color-dark: rgb(20, 26, 21);
-$bg-color: rgb(29, 38, 48);
-$bg-color-light: rgb(224, 230, 235);
+$color-text: rgb(223,231,241);
+$color-text-dark: rgb(20, 26, 21);
+$color-bg: rgb(29, 38, 48);
+$color-bg-light: rgb(224, 230, 235);
+
+$color-error: rgb(255, 32, 32);
 
 $highlight: inset 0px 4px 8px -4px rgba(234, 255, 251, 0.5);
 $shadow: 2px 2px 1px 1px rgba(0,0,0,0.4);
+
 
 .container {
 
   position: relative;
 
-  /* border: 1px solid black; */
   border-radius: 4px;
-  background-color: rgba($bg-color, 0.9);
+  background-color: rgba($color-bg, 0.9);
 
   padding: 0.5em 0.5em 0.5em 0.5em;
 

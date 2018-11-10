@@ -1,4 +1,4 @@
-#nav-bar {
+.nav-bar {
 
   position: fixed;
   z-index: 1;
@@ -10,76 +10,76 @@
 
   padding: 0px 2em;
 
-  color: $txt-color;
-  background-color: rgba($bg-color, 1);
+  color: $color-text;
+  background-color: rgba($color-bg, 1);
 
   box-shadow: $shadow;
 
-}
+  &-logo {
 
-#nav-bar .logo {
+    float: left;
 
-  float: left;
+    margin-top: 8px;
+    margin-bottom: 8px;
 
-  margin-top: 8px;
-  margin-bottom: 8px;
+    margin-right: 16px;
 
-  margin-right: 16px;
+    height: 48px;
 
-  height: 48px;
+  }
 
-}
+  &-header {
+
+    float: left;
+
+    line-height: 64px;
+    font-size: 3em;
+
+    margin-right: 16px;
+
+  }
+
+  @media only screen and (max-width: $responsive-width) {
+
+    &-header {
+      display:none;
+    }
+
+  }
+
+  &-compose {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
 
 
-#nav-bar .header {
 
-  float: left;
+    background: rgba($color-bg-light, 0.8);
 
-  line-height: 64px;
-  font-size: 3em;
+    border: 0;
+    border-radius: 4px;
 
-  margin-right: 16px;
+    padding: 0.2em 0.5em 0.2em 0.5em;
 
-}
+    font-size: 1.3em;
+
+    &:hover {
 
 
-@media only screen and (max-width: $responsive-width) {
+      background: rgba($color-bg-light, 1);
 
-  #nav-bar .header {
-    display:none;
+    }
+
+    &:active {
+
+      background: rgba($color-bg, 1);
+
+    }
+
   }
 
 }
 
-#nav-bar .compose {
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-
-
-
-  background: rgba($bg-color-light, 0.8);
-
-  border: 0;
-  border-radius: 4px;
-
-  padding: 0.2em 0.5em 0.2em 0.5em;
-
-  font-size: 1.3em;
-
-}
-
-#nav-bar .compose:hover {
-
-
-  background: rgba($bg-color-light, 1);
-
-}
-
-#nav-bar .compose:active {
-
-  background: rgba($bg-color, 1);
-
-}
