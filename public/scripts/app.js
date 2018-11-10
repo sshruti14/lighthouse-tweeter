@@ -8,6 +8,7 @@ const globals = {
 };
 
 
+// Convert Unix timestamps into "25 minutes ago", etc
 function formattedAge(uTime) {
   return moment(uTime).fromNow();
 }
@@ -80,10 +81,11 @@ function renderTweets(data) {
 
   let elements = [];
 
-  let i = data.length - 1;
-  do {
-    elements.push(createTweetElement(data[i]));
-  } while (i--);
+  // Data is given with the newest tweets first.
+  // Making sure we retain that order.
+  data.forEach(tweet => {
+    elements.unshift(createTweetElement(tweet));
+  });
 
   return elements;
 
@@ -104,20 +106,28 @@ function validateTweet(text) {
 
   const elm = $(".new-tweet-validation");
 
-  if (text === "") {
-    // alert("Forget to type something there, friend?");
+  switch(true) {
+  case (text.length === 0): {
+
     elm.addClass("new-tweet-validation-error");
     elm.text("Ye'r lookin' a bit empty, friend");
     return;
-  } else if (text.length > globals.MAX_TWEET_LENGTH) {
-    // alert("So yeah... that character counter? It's there for a reason, and it's red for a reason.");
+
+  }
+  case (text.length > globals.MAX_TWEET_LENGTH): {
+
     elm.addClass("new-tweet-validation-error");
     elm.text("This be a mug o' grog, not a keg");
     return;
-  }
 
-  elm.removeClass("new-tweet-validation-error");
-  return true;
+  }
+  default: {
+
+    elm.removeClass("new-tweet-validation-error");
+    return true;
+
+  }
+  }
 
 }
 
@@ -132,7 +142,6 @@ function submitTweet(event) {
   event.preventDefault();
 
   const textArea = $(".new-tweet-text");
-
   const text = textArea.val();
 
   if (!validateTweet(text)) return;
@@ -184,6 +193,7 @@ function loadTweets(data) {
 }
 
 
+// Periodically check with the server for new tweets
 function restartPolling() {
 
   window.clearTimeout(globals.fetchTimeout);
@@ -193,7 +203,7 @@ function restartPolling() {
 }
 
 
-// Request all tweets created since the last fetch
+// Request all tweets created since the most recent tweet we've had
 function fetchTweets(cb) {
 
   const since = globals.LAST_FETCHED;
@@ -207,13 +217,14 @@ function fetchTweets(cb) {
       if (data.length) {
 
         // Filtering again for cases where two fetches were sent off very
-        // close together and the same new tweet comes back twice
-        const filtered = data.filter(tweet => tweet.created_at > globals.LAST_FETCHED);
+        // close together and the same tweet comes back twice
+        const filtered = data.filter(tweet => {
+          return tweet.created_at > globals.LAST_FETCHED;
+        });
 
         cb(filtered);
 
-        const last = filtered[filtered.length-1];
-        globals.LAST_FETCHED = last.created_at;
+        globals.LAST_FETCHED = filtered[filtered.length-1].created_at;
 
       }
 
@@ -234,6 +245,7 @@ function attachListeners() {
 
 
 $( () => {
+
   fetchTweets(loadTweets);
   attachListeners();
 
