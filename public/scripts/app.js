@@ -51,22 +51,33 @@ function createTweetElement(tweet) {
           $("<span>")
             .addClass("tweet-age")
             .text(formattedAge(tweet.created_at)),
-          $("<img>")
-            .addClass("tweet-award")
-            .attr("src", globals.IMG_AWARD)
-            .attr("alt", "Give 'em a share of yer spoils")
-            .attr("title", "Give 'em a share of yer spoils"),
-          $("<img>")
-            .addClass("tweet-drink")
-            .attr("src", globals.IMG_DRINKTO)
-            .attr("alt", "Drink to that")
-            .attr("title", "Drink to that"),
-          $("<img>")
-            .addClass("tweet-flag")
-            .attr("src", globals.IMG_FLAG)
-            .attr("alt", "Raise the jolly roger")
-            .attr("title", "Raise the jolly roger"),
-
+          $("<a>")
+            .attr("href", "#")
+            .append(
+              $("<img>")
+                .addClass("tweet-award")
+                .attr("src", globals.IMG_AWARD)
+                .attr("alt", "Give 'em a share of yer spoils")
+                .attr("title", "Give 'em a share of yer spoils")
+            ),
+          $("<a>")
+            .attr("href", "#")
+            .append(
+              $("<img>")
+                .addClass("tweet-drink")
+                .attr("src", globals.IMG_DRINKTO)
+                .attr("alt", "Drink to that")
+                .attr("title", "Drink to that")
+            ),
+          $("<a>")
+            .attr("href", "#")
+            .append(
+              $("<img>")
+                .addClass("tweet-flag")
+                .attr("src", globals.IMG_FLAG)
+                .attr("alt", "Raise the jolly roger")
+                .attr("title", "Raise the jolly roger")
+            )
         )
     );
 

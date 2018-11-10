@@ -16,6 +16,8 @@
 
 }
 
+$responsive-width: 760px;
+
 $txt-color: rgb(223,231,241);
 $txt-color-dark: rgb(20, 26, 21);
 $bg-color: rgb(29, 38, 48);
@@ -38,5 +40,5 @@ $shadow: 2px 2px 1px 1px rgba(0,0,0,0.4);
   margin-bottom: 0.5em;
 
   box-shadow: $highlight, $shadow;
-  
+
 }

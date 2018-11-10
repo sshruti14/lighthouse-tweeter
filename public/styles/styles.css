@@ -39,7 +39,7 @@ body {
   color: #dfe7f1;
   /* background-color: #eee; */
   background: url("/images/background.jpg") no-repeat;
-  background-size: auto 100vh;
+  background-size: auto 100%;
   background-attachment: fixed;
   animation: backgroundScroll 480s cubic-bezier(0.05, 0.01, 0.95, 0.99) infinite; }
 
@@ -51,11 +51,15 @@ main {
   margin-right: auto;
   /* background-color: white; */ }
 
+@media only screen and (max-width: 760px) {
+  main {
+    width: calc(300px + 20vw); } }
+
 #nav-bar {
   position: fixed;
   z-index: 1;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 64px;
   padding: 0px 2em;
   color: #dfe7f1;
@@ -74,6 +78,10 @@ main {
   line-height: 64px;
   font-size: 3em;
   margin-right: 16px; }
+
+@media only screen and (max-width: 760px) {
+  #nav-bar .header {
+    display: none; } }
 
 #nav-bar .compose {
   position: absolute;
@@ -191,6 +199,7 @@ main {
   top: 0px;
   right: 8px;
   line-height: 2rem;
+  font-size: 1rem;
   color: #dfe7f1; }
 
 .tweet section {
@@ -271,4 +280,11 @@ main {
   position: absolute;
   left: calc(100% - 128px);
   top: -63px;
-  transform: rotate(14deg); }
+  transform: rotate(-14deg) scaleX(-1); }
+
+@media only screen and (max-width: 760px) {
+  .page-footer {
+    top: calc(100% - 24px);
+    height: 24px; }
+  .page-footer .tm-wrapper {
+    display: none; } }

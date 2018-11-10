@@ -61,5 +61,21 @@
   position: absolute;
   left: calc(100% - 128px);
   top: -63px;
-  transform: rotate(14deg);
+  transform: rotate(-14deg) scaleX(-1);
+}
+
+
+@media only screen and (max-width: $responsive-width) {
+
+  .page-footer {
+
+    top: calc(100% - 24px);
+    height: 24px;
+
+  }
+
+  .page-footer .tm-wrapper {
+    display: none;
+  }
+
 }

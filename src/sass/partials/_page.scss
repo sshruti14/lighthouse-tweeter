@@ -11,7 +11,7 @@ body {
   color: $txt-color;
   /* background-color: #eee; */
   background: url("/images/background.jpg") no-repeat;
-  background-size: auto 100vh;
+  background-size: auto 100%;
   background-attachment: fixed;
   animation: backgroundScroll 480s cubic-bezier(0.05, 0.01, .95, .99) infinite;
 
@@ -32,3 +32,8 @@ main {
 
 }
 
+@media only screen and (max-width: $responsive-width) {
+  main {
+    width: calc(300px + 20vw);
+  }
+}
