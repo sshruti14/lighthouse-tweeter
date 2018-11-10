@@ -14,7 +14,6 @@ module.exports = {
     // const firstName = chance.first({gender: gender});
     // const lastName  = chance.last();
     const generatedName = pirateNameGenerator().match(/(\w+) '[^']+' (\w+)/);
-    console.log(generatedName);
     const firstName = generatedName[1];
     const lastName = generatedName[2];
     const userName  = firstName + " " + lastName;
