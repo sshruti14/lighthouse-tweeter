@@ -7,7 +7,7 @@ _Grogger_ is a basic clone of Twitter, catering to a slightly... scurvier... dem
 ## Usage
 
 Option A:
-- Set sail for [https://morning-lake-39046.herokuapp.com/](https://morning-lake-39046.herokuapp.com/)
+- Set sail for [http://grogger.herokuapp.com/](http://grogger.herokuapp.com/)
 
 Option B:
 - Clone this repository
